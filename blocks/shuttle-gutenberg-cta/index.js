@@ -117,6 +117,7 @@ export default registerBlockType(
             let settings = getSettings( attributes );
 
             let ctaBackground = attributes['ctaBackgroundColor'];
+            let ctaFontColor = attributes['ctaFontColor'];
 
 
             return(
@@ -127,7 +128,8 @@ export default registerBlockType(
 
 
 
-                    <div className={'shutte-cta-text-wrapper'}>
+                    <div className={'shutte-cta-text-wrapper'}
+                         style={ { color:ctaFontColor } }>
                     <h2 className={ 'shuttle-cta-title' }>{ctaTitle}</h2>
                     <p className={ 'shuttle-cta-subtitle' }>{ctaMessage}</p>
 
