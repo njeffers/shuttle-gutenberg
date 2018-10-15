@@ -46,7 +46,7 @@ export default registerBlockType(
     {
         title: __( 'Call To Action', 'shuttle' ),
         description: __( 'An example of how to use form fields in the Inspector element.', 'shuttle'),
-        category: 'common',        
+        category: 'shuttle-gutenberg-blocks',
         icon: {
             background: 'rgba(254, 243, 224, 0.52)',
             src: icon,
