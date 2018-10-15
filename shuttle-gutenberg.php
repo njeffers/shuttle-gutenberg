@@ -19,7 +19,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-//namespace Wordpress_Shuttle\Gutenberg_Blocks;
+namespace Wordpress_Shuttle\Gutenberg_Blocks;
 
 //  Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
@@ -75,7 +75,7 @@ function ws_block_categories( $categories = array(), $post ) {
 	return $categories;
 }
 
-add_filter( 'block_categories', 'ws_block_categories', 10, 2 );
+add_filter( 'block_categories', 'Wordpress_Shuttle\Gutenberg_Blocks\ws_block_categories', 10, 2 );
 
 
 
