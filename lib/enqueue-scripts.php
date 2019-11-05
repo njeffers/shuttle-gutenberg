@@ -1,6 +1,6 @@
 <?php
 
-namespace Wordpress_Shuttle\Gutenberg_Blocks;
+namespace Gutenberg_Courses\Example_Blocks;
 
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_block_editor_assets' );
 /**
@@ -13,17 +13,17 @@ function enqueue_block_editor_assets() {
 
 	// Enqueue the bundled block JS file
 	wp_enqueue_script(
-		'shuttle-gutenberg-blocks-js',
+		'jsforwp-blocks-js',
 		_get_plugin_url() . $block_path,
-		[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components' ],
+		[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-editor' ],
 		filemtime( _get_plugin_directory() . $block_path )
 	);
 
 	// Enqueue optional editor only styles
 	wp_enqueue_style(
-		'shuttle-gutenberg-blocks-editor-css',
+		'jsforwp-blocks-editor-css',
 		_get_plugin_url() . $style_path,
-		[ 'wp-blocks' ],
+		[ ],
 		filemtime( _get_plugin_directory() . $style_path )
 	);
 }
@@ -35,9 +35,9 @@ add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_assets' );
 function enqueue_assets() {
 	$style_path = '/assets/css/blocks.style.css';
 	wp_enqueue_style(
-		'shuttle-gutenberg-blocks',
+		'jsforwp-blocks',
 		_get_plugin_url() . $style_path,
-		[ 'wp-blocks' ],
+		null,
 		filemtime( _get_plugin_directory() . $style_path )
 	);
 }
@@ -55,7 +55,7 @@ function enqueue_frontend_assets() {
 
 	$block_path = '/assets/js/frontend.blocks.js';
 	wp_enqueue_script(
-		'shuttle-gutenberg-blocks-frontend',
+		'jsforwp-blocks-frontend',
 		_get_plugin_url() . $block_path,
 		[],
 		filemtime( _get_plugin_directory() . $block_path )

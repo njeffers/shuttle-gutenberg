@@ -41,7 +41,13 @@ export default class Inspector extends Component {
     }
 
     render() {
-        const { attributes: { buttonText, ctaBackgroundColor, ctaFontColor, checkboxControl, colorPaletteControl, radioControl, rangeControl, textControl, textareaControl, toggleControl, selectControl, buttonURL, imgID, imgURL, imgAlt }, setAttributes } = this.props;
+        const {
+            attributes: {
+                buttonText,
+                ctaBackgroundColor,
+                ctaFontColor, checkboxControl, colorPaletteControl, radioControl, rangeControl, textControl, textareaControl, toggleControl, selectControl, buttonURL, imgID, imgURL, imgAlt
+            }, setAttributes
+        } = this.props;
 
 
         const onSelectImage = img => {

@@ -19,10 +19,10 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Wordpress_Shuttle\Gutenberg_Blocks;
+//namespace Wordpress_Shuttle\Gutenberg_Blocks;
 
 //  Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 /**
  * Gets this plugin's absolute directory path.
@@ -56,61 +56,14 @@ function _get_plugin_url() {
 	return $plugin_url;
 }
 
-
-
-
-function ws_block_categories( $categories = array(), $post ) {
-	if ( $post->post_type !== 'post' ) {
-		return $categories;
-	}
-
-
-
-	$categories[] = array(
-		'slug' => 'shuttle-gutenberg-blocks',
-		'title' => __( 'Shuttle Blocks', 'wordpress-shuttle' ),
-		);
-
-
-	return $categories;
-}
-
-add_filter( 'block_categories', 'Wordpress_Shuttle\Gutenberg_Blocks\ws_block_categories', 10, 2 );
-
-
-
 // Enqueue JS and CSS
-include __DIR__.'/lib/enqueue-scripts.php';
+include __DIR__ . '/lib/enqueue-scripts.php';
 
 // Register meta boxes
-include __DIR__.'/lib/meta-boxes.php';
+include __DIR__ . '/lib/meta-boxes.php';
 
 // Block Templates
-include __DIR__.'/lib/block-templates.php';
+include __DIR__ . '/lib/block-templates.php';
 
-/*
-add_filter( 'block_categories', 'ws_add_block_category' );
-function ws_add_block_category( $categories ) {
-
-	$categories[] = array(
-		'slug' => 'shuttle-gutenberg-blocks',
-		'title' => sprintf(
-			__( 'Shuttle Blocks', 'wordpress-shuttle' ),
-			'Shuttle'
-		),
-	);
-
-	return $categories;
-}*/
-
-/*
-add_filter( 'block_categories', function ( $categories, $post ) {
-	return array_merge(
-		$categories,
-		array(
-			'slug' => 'mario-blocks',
-			'title' => __( 'Mario Blocks', 'mario-blocks' ),
-
-		)
-	);
-}, 10, 2 );*/
+// Dynamic Blocks
+include __DIR__ . '/blocks/12-dynamic/index.php';

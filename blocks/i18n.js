@@ -1,1 +1,1 @@
-wp.i18n.setLocaleData( { '': {} }, 'shuttle' );
+wp.i18n.setLocaleData( { '': {} }, 'jsforwpblocks' );

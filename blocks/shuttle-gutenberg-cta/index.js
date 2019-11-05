@@ -6,7 +6,7 @@ import Inspector from './inspector';
 import Controls from './controls';
 import icon from './icon';
 import attributes from './attributes';
-import './style.scss';
+// import './style.scss';
 
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
@@ -26,6 +26,7 @@ const {
     TextControl,
 } = wp.components;
 
+
 function getSettings( attributes ) {
     let settings = [];
     for( let attribute in attributes ) {
@@ -42,7 +43,7 @@ function getSettings( attributes ) {
  * Register static block example block
  */
 export default registerBlockType(
-    'shuttle/shuttle-blocks',
+    'jsforwpblocks/shuttle-blocks',
     {
         title: __( 'Call To Action', 'shuttle' ),
         description: __( 'An example of how to use form fields in the Inspector element.', 'shuttle'),
@@ -69,7 +70,7 @@ export default registerBlockType(
 
             let settings = getSettings( attributes );
 
-            let ctaBackground = attributes['ctaBackgroundColor'];
+            let ctaBackground = attributes['colorPaletteControl'];
             let ctaFontColor = attributes['ctaFontColor'];
 
             return [
@@ -116,7 +117,7 @@ export default registerBlockType(
 
             let settings = getSettings( attributes );
 
-            let ctaBackground = attributes['ctaBackgroundColor'];
+            let ctaBackground = attributes['colorPaletteControl'];
             let ctaFontColor = attributes['ctaFontColor'];
 
 
