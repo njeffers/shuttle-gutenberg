@@ -36,30 +36,13 @@ export default class Inspector extends Component {
   render() {
     const {
       attributes: {
-          backgroundColor,
-          ctaTitle,
-          ctaMessage,
-          ctaFontColor,
-          buttonText,
-          buttonURL,
-          imgUrl,
+          ContentBlockTitle,
+          ContentBlockMessage,
+          ContentBlockFaIcon
       },
       setAttributes
     } = this.props;
 
-      function selectImage(value) {
-          console.log(value);
-          setAttributes({
-              imgUrl: value.sizes.full.url,
-          });
-      }
-
-
-      function onRemoveImage(){
-          setAttributes({
-              imgUrl: "",
-          });
-      }
 
       return (
       <InspectorControls>
@@ -71,106 +54,21 @@ export default class Inspector extends Component {
               initialOpen={true}
           >
 
-              <div className="media">
-                  <MediaUpload
-                      onSelect={selectImage}
-                      render={ ({open}) => {
-                          return <img
-                              src={imgUrl}
-                              onClick={open}
-                          />;
-                      }}
-                  />
-
-                  <MediaUpload
-                      onSelect={selectImage}
-                      type="image"
-                      value={imgUrl}
-                      render={({ open }) => (
-                          <button
-                              className="btn btn-primary"
-                              onClick={open}>
-                              Upload Image!
-                          </button>
-                      )}
-                  />
-
-                  <Button
-                      className="remove-image"
-                      onClick={ onRemoveImage }
-                  >
-                      { icons.remove }
-                  </Button>
-
-              </div>
-
-                  <TextControl
-                      label={__("Title", "jsforwpblocks")}
-                      value={ctaTitle}
-                      onChange={ ( ctaTitle ) => setAttributes( { ctaTitle } ) }
-                  />
-
-                  <TextareaControl
-                      label={__("Subtitle", "jsforwpblocks")}
-                      value={ctaMessage}
-                      onChange={ ( ctaMessage ) => setAttributes( { ctaMessage } ) }
-                  />
-
-          </PanelBody>
-
-
-          <PanelBody
-              title={__("Button", "jsforwpblocks")}
-              initialOpen={true}
-          >
-
 
               <TextControl
-                  label={ __( 'Button Text', 'shuttle' ) }
-                  value={ buttonText }
-                  onChange={ buttonText => setAttributes( { buttonText } ) }
+                  label={__("Icon", "jsforwpblocks")}
+                  value={ContentBlockFaIcon}
+                  onChange={ ( ContentBlockFaIcon ) => setAttributes( { ContentBlockFaIcon } ) }
               />
-
-              <p>{ __( 'Button URL', 'shuttle' ) }</p>
-                  <URLInput
-                      label={ __( 'Button URL', 'shuttle' ) }
-                      className="url"
-                      value={ buttonURL }
-                      onChange={ buttonURL => setAttributes( { buttonURL } ) }
-                  />
-
-
-          </PanelBody>
-
-          <PanelBody
-              title={__("Colors", "jsforwpblocks")}
-              initialOpen={false}
-          >
-
-
-                  <PanelColorSettings
-                      title={__("Background Color", "jsforwpblocks")}
-                      colorSettings={[
-                          {
-                              value: backgroundColor,
-                              onChange: backgroundColor => {
-                                  setAttributes({ backgroundColor });
-                              },
-                              label: __("Background Color")
-                          }
-                      ]}
-                  />
-                  <PanelColorSettings
-                      title={__("Font Color", "jsforwpblocks")}
-                      colorSettings={[
-                          {
-                              value: ctaFontColor,
-                              onChange: ctaFontColor => {
-                                  setAttributes({ ctaFontColor });
-                              },
-                              label: __("Font Color")
-                          }
-                      ]}
+              <TextControl
+                  label={__("Title", "jsforwpblocks")}
+                  value={ContentBlockTitle}
+                  onChange={ ( ContentBlockTitle ) => setAttributes( { ContentBlockTitle } ) }
+              />
+                  <TextareaControl
+                      label={__("Subtitle", "jsforwpblocks")}
+                      value={ContentBlockMessage}
+                      onChange={ ( ContentBlockMessage ) => setAttributes( { ContentBlockMessage } ) }
                   />
 
           </PanelBody>

@@ -95,8 +95,21 @@ export default registerBlockType("shuttle-block/cta", {
 
         </div>
 
+
+
         <div className={'shuttle-cta-button-wrapper'}>
-          <button className="btn btn-primary">{attributes[ 'buttonText' ] }</button>
+
+          <RichText
+              tagName="button"
+              className="btn btn-primary"
+              placeholder={ __( 'Submit', 'shuttle' ) }
+              onChange={ buttonText => { setAttributes( { buttonText } ) } }
+              value={ buttonText }
+          />
+
+
+          {/*<button className="btn btn-primary">{attributes[ 'buttonText' ] }</button>*/}
+
         </div>
 
       </div>

@@ -13,6 +13,16 @@ const { registerBlockType } = wp.blocks;
 const { RichText } = wp.editor;
 const { } = wp.element;
 
+
+// import ReactDOM from 'react-dom';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import { fab } from '@fortawesome/free-brands-svg-icons';
+//
+// import { faCoffee, faSpinner, faThumbsup } from '@fortawesome/free-solid-svg-icons';
+
+
 const {
   IconButton,
   Tooltip,
@@ -23,10 +33,10 @@ const {
 /**
  * Register inspector control example block
  */
-export default registerBlockType("shuttle-block/cta", {
-  title: __("Call To Action", "shuttle-block"),
+export default registerBlockType("shuttle-block/ws-content-block", {
+  title: __("Content Block", "shuttle-block"),
   description: __(
-    "Simple Call To Action",
+    "Content Block",
     "shuttle-blocks"
   ),
   category: 'shuttle-blocks', // Block category
@@ -35,8 +45,7 @@ export default registerBlockType("shuttle-block/cta", {
     src: icons.upload
   },
   keywords: [
-    __("CTA", "jsforwpblocks"),
-    __("Call to Action", "jsforwpblocks"),
+    __("Content Block", "jsforwpblocks"),
     __("Shuttle", "jsforwpblocks")
   ],
   attributes,
@@ -52,7 +61,13 @@ export default registerBlockType("shuttle-block/cta", {
   },
   edit: props => {
     const {
-      attributes: { textAlignment, blockAlignment, ctaTitle,ctaMessage, backgroundColor, imgUrl, ctaFontColor, buttonText, buttonURL },
+      attributes: {
+        textAlignment,
+        blockAlignment,
+        ContentBlockTitle,
+        ContentBlockMessage,
+        ContentBlockFaIcon,
+      },
       attributes,
       className,
       setAttributes
@@ -64,81 +79,92 @@ export default registerBlockType("shuttle-block/cta", {
       <Controls {...{ setAttributes, ...props }} />,
 
 
-      <div className={className} style={{
-        textAlign: textAlignment,
-        backgroundColor: backgroundColor,
-        backgroundImage: `url(${imgUrl})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
+      <div className={className}>
 
-      }}>
-
-        <div className={'shutte-cta-text-wrapper'}
-             style={{ color:ctaFontColor }}>
-
-          <RichText
-              tagName="h2"
-              className="shuttle-cta-title"
-              placeholder={ __( 'Title Here', 'shuttle' ) }
-              value={ ctaTitle }
-              onChange={ ( ctaTitle ) => setAttributes( { ctaTitle } ) }
-          />
+        <div className={'col-xs-12 text-center ws-content-block-outer'}>
+          <div className={'ws-content-block-inner dropshadow'}>
+            <div className={'section-dropshadow-content-area'}>
 
 
-          <RichText
-              tagName="div"
-              className="shuttle-cta-message"
-              placeholder={ __( 'Add your custom message', 'shuttle' ) }
-              onChange={ ctaMessage => { setAttributes( { ctaMessage } ) } }
-              value={ ctaMessage }
-          />
+              <RichText
+                  tagName="h2"
+                  className="shuttle-content-block-title"
+                  placeholder={ __( 'Title Here', 'shuttle' ) }
+                  value={ ContentBlockTitle }
+                  onChange={ ( ContentBlockTitle ) => setAttributes( { ContentBlockTitle } ) }
+              />
 
-        </div>
 
-        <div className={'shuttle-cta-button-wrapper'}>
-          <button className="btn btn-primary">{attributes[ 'buttonText' ] }</button>
+              <RichText
+                  tagName="div"
+                  className="shuttle-content-block-message"
+                  placeholder={ __( 'Add your custom message', 'shuttle' ) }
+                  onChange={ ContentBlockMessage => { setAttributes( { ContentBlockMessage } ) } }
+                  value={ ContentBlockMessage }
+              />
+
+{/*
+              <RichText
+                  tagName="h2"
+                  className="shuttle-content-block-icon-name"
+                  placeholder={ __( 'faSpinner', 'shuttle' ) }
+                  value={ ContentBlockFaIcon }
+                  onChange={ ( ContentBlockFaIcon ) => setAttributes( { ContentBlockFaIcon } ) }
+              />
+
+*/}
+
+
+
+            </div>
+          </div>
         </div>
 
       </div>
+
+
 
     ];
   },
   save: props => {
     const {
-      attributes: { textAlignment, blockAlignment, ctaTitle, ctaMessage, backgroundColor, imgUrl, ctaFontColor, buttonText, buttonURL },
+      attributes: {
+        textAlignment,
+        className,
+        blockAlignment,
+        ContentBlockTitle,
+        ContentBlockMessage,
+      },
       attributes
     } = props;
 
 
     return (
-      <div
-        className={`align${blockAlignment}`}
-        style={{
-          textAlign: textAlignment,
-          backgroundColor: backgroundColor,
 
-          backgroundImage: `url(${imgUrl})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
 
-        <div className={'shutte-cta-text-wrapper'}
-             style={ { color:ctaFontColor } }>
+        <div className={className}>
 
-          <h2 className={ 'shuttle-cta-title' }>{ctaTitle}</h2>
 
-          <div className={ 'shuttle-cta-subtitle' }>{ctaMessage}</div>
+          <div className={'col-xs-12 text-center ws-content-block-outer'}>
+            <div className={'ws-content-block-inner dropshadow'}>
+              <div className={'section-dropshadow-content-area'}>
+
+                {/*icon is: { ContentBlockFaIcon }*/}
+{/*
+                <div>
+                  <FontAwesomeIcon className={'fa-xs fa-w-1'} size="sm" title="This is a title" fixed-width="true" icon="thumbs-up"/>
+                </div>*/}
+
+                <h1 className={ 'shuttle-content-block-title' }>{ContentBlockTitle}</h1>
+                <div className={ 'shuttle-content-block-subtitle' }>{ContentBlockMessage}</div>
+
+
+              </div>
+            </div>
+          </div>
 
         </div>
 
-        <div className={'shuttle-cta-button-wrapper'}>
-          <a href={buttonURL}
-             className={ 'btn btn-primary' }>{ buttonText}</a>
-        </div>
-
-
-      </div>
     );
   }
 });

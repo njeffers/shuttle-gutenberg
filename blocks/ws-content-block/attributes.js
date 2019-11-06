@@ -1,57 +1,18 @@
 const attributes = {
 
-  buttonText: {
-    type: 'string',
-    default: 'Click Here',
-  },
-  buttonURL: {
-    type: 'string',
-    default: 'https://google.com',
-  },
-
-  ctaTitle: {
-    type: "string",
-    placeholder: "Title here bro"
-  },
-
-  ctaMessage: {
+  ContentBlockMessage: {
     type: "string",
     placeholder: "Add your custom message"
   },
 
-
-  backgroundColor: {
+  ContentBlockTitle: {
     type: "string",
-    default: "#d9d9d9"
+    placeholder: "Title Here"
   },
-
-  ctaFontColor: {
+  ContentBlockFaIcon: {
     type: "string",
-    default: "#000"
+    placeholder: "Icon"
   },
-
-  imgUrl: {
-    type: 'string',
-    default: null
-  },
-
-  titleTagClass: {
-    type: "string",
-    default: "h1"
-  },
-  blockAlignment: {
-    type: "string",
-    default: "wide"
-  },
-
-  textAlignment: {
-    type: "string",
-    default: "left"
-  },
-
-
-
-
 
 };
 
