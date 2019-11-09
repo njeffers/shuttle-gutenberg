@@ -82,7 +82,7 @@ export default registerBlockType(
                 >
 
 
-                    <div className={'shutte-cta-text-wrapper'}
+                    <div className={'shuttle-cta-text-wrapper'}
                          style={ { color:ctaFontColor } }>
                         <RichText
                             tagName="h2"
@@ -129,7 +129,7 @@ export default registerBlockType(
 
 
 
-                    <div className={'shutte-cta-text-wrapper'}
+                    <div className={'shuttle-cta-text-wrapper'}
                          style={ { color:ctaFontColor } }>
                     <h2 className={ 'shuttle-cta-title' }>{ctaTitle}</h2>
                     <p className={ 'shuttle-cta-subtitle' }>{ctaMessage}</p>

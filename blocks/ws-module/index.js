@@ -6,12 +6,26 @@
  */
 
 //  Import CSS.
-import './editor.scss';
-import './style.scss';
+import classnames from "classnames";
+import Inspector from "./inspector";
+import Controls from "./controls";
+import icons from "./icon";
+import attributes from "./attributes";
+import "./style.scss";
 
-const { __ } = wp.i18n; // Import __() from wp.i18n
-const { registerBlockType} = wp.blocks; // Import registerBlockType() from wp.blocks
+
+
+const { __ } = wp.i18n;
+const { registerBlockType } = wp.blocks;
 const { InnerBlocks, RichText } = wp.editor;
+const { } = wp.element;
+
+const {
+	IconButton,
+	Tooltip,
+	TextControl,
+} = wp.components;
+
 
 
 /**
@@ -54,8 +68,15 @@ export default registerBlockType("shuttle-block/module", {
 	 * @returns {Mixed} JSX Component.
 	 */
 	edit: ( props ) => {
-		// Creates a <p class='wp-block-cgb-block-modules-block'></p>.
-        const { className, setAttributes,attributes } = props;
+
+		const {
+			attributes: { textAlignment, blockAlignment, ctaTitle,ctaMessage, backgroundColor, imgUrl, ctaFontColor, buttonText, buttonURL },
+			attributes,
+			className,
+			setAttributes
+		} = props;
+
+
 
 
         function changeHeading(heading) {
@@ -66,15 +87,19 @@ export default registerBlockType("shuttle-block/module", {
 
 
 		return (
+			<Inspector {...{ setAttributes, ...props }} />,
+			<Controls {...{ setAttributes, ...props }} />,
+
             <div>
-            <RichText
-        className="copy-hd"
-        tagName="h2"
-        placeholder="Enter your heading"
-        value={attributes.heading}
-        onChange={changeHeading}
-        />
-        <InnerBlocks />
+				<RichText
+					className="copy-hd"
+					tagName="h2"
+					placeholder="Enter your heading"
+					value={attributes.heading}
+					onChange={changeHeading}
+				/>
+
+				<InnerBlocks />
             </div>
 		);
 	},
